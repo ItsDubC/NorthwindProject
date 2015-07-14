@@ -12,6 +12,6 @@ namespace NorthwindProject.DataAccess.Abstract
     {
         List<ProductDetail> GetProductDetails();
 
-        int GetProductCountByCategory();
+        int GetProductCountByCategory(int? categoryId);
     }
 }
