@@ -14,9 +14,11 @@ namespace NorthwindProject.Business.Abstract
         List<Product> GetAll(ProductFilter filter);
         Product GetById(int productId);
         List<Product> GetByCategoryId(int categoryId);
+        List<Product> GetByProductName(string name);
         void Add(Product product);
         void Update(Product product);
         void Delete(Product product);
-        void DeleteById(int productId);
+        //void DeleteById(int productId);
+        int GetProductsCountByCategory(int? categoryId);
     }
 }

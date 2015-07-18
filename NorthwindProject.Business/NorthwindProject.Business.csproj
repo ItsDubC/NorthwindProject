@@ -41,11 +41,18 @@
   <ItemGroup>
     <Compile Include="Abstract\ICategoryService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
+    <Compile Include="Abstract\IUserService.cs" />
+    <Compile Include="Concrete\Managers\CategoryManager.cs" />
     <Compile Include="Concrete\Managers\ProductManager.cs" />
+    <Compile Include="Concrete\Managers\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\NorthwindProject.DataAccess\NorthwindProject.DataAccess.csproj">
+      <Project>{7dca5eee-602c-4489-be95-71f1a666b2f5}</Project>
+      <Name>NorthwindProject.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NorthwindProject.Entities\NorthwindProject.Entities.csproj">
       <Project>{f14e6ceb-41e8-4546-a60f-4035d12f9853}</Project>
       <Name>NorthwindProject.Entities</Name>

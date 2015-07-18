@@ -1,47 +1,96 @@
 ﻿using NorthwindProject.Business.Abstract;
+using NorthwindProject.DataAccess.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NorthwindProject.Entities.Concrete;
 
 namespace NorthwindProject.Business.Concrete.Managers
 {
-    public class ProductManager : IProductService
+    public class ProductManager : IProductService  //Implement business logic here
     {
-        public List<Entities.Concrete.Product> GetAll(Entities.ComplexTypes.ProductFilter filter)
+        private IProductDal _productDal;
+
+        public ProductManager(IProductDal productDal)
         {
-            throw new NotImplementedException();
+            _productDal = productDal;
         }
 
-        public Entities.Concrete.Product GetById(int productId)
+        public List<Product> GetAll(Entities.ComplexTypes.ProductFilter filter)
         {
-            throw new NotImplementedException();
+            int? categoryId = filter.CategoryId;
+
+            if (categoryId != null)
+            { 
+                return _productDal.GetList(filter: p => p.CategoryId == categoryId, 
+                    orderBy:o=>o.OrderBy(p=>p.Id), 
+                    page:filter.Page, 
+                    pageSize:filter.PageSize);
+            }
+            else
+            {
+                return _productDal.GetList(
+                    orderBy: o => o.OrderBy(p => p.Id),
+                    page: filter.Page,
+                    pageSize: filter.PageSize);
+            }
         }
 
-        public List<Entities.Concrete.Product> GetByCategoryId(int categoryId)
+        public Product GetById(int productId)
         {
-            throw new NotImplementedException();
+            return _productDal.Get(p => p.Id == productId);
         }
 
-        public void Add(Entities.Concrete.Product product)
+        public List<Product> GetByCategoryId(int categoryId)
         {
-            throw new NotImplementedException();
+            //return _productDal.GetList(filter:p=>p.CategoryId == categoryId);
+            return _productDal.GetList(p => p.CategoryId == categoryId);
         }
 
-        public void Update(Entities.Concrete.Product product)
+        public void Add(Product product)
         {
-            throw new NotImplementedException();
+            ProductNameCheck(product);
+            _productDal.Add(product);
         }
 
-        public void Delete(Entities.Concrete.Product product)
+        public void Update(Product product)
         {
-            throw new NotImplementedException();
+            ProductNameCheck(product);
+            _productDal.Update(product);
         }
 
-        public void DeleteById(int productId)
+        public void Delete(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(product);
+        }
+
+        //public void DeleteById(int productId)
+        //{
+        //    //_productDal.Delete()
+        //}
+
+
+        public List<Product> GetByProductName(string name)
+        {
+            return _productDal.GetList(p => p.Name.Contains(name));
+        }
+
+
+        public int GetProductsCountByCategory(int? categoryId)
+        {
+            return _productDal.GetProductCountByCategory(categoryId);
+        }
+
+        private void ProductNameCheck(Product product)
+        {
+            bool isThereAnyProductNameWithSameName = _productDal.GetList(p => p.Name == product.Name).Any();
+
+            if (isThereAnyProductNameWithSameName)
+            {
+                throw new Exception("There is already a product with the same name.");
+            }
         }
     }
 }
