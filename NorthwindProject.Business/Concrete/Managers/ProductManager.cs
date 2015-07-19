@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NorthwindProject.Entities.Concrete;
+using NorthwindProject.Business.ValidationRules;
+using NorthwindProject.Business.ValidationRules.FluentValidation;
 
 namespace NorthwindProject.Business.Concrete.Managers
 {
@@ -51,6 +53,7 @@ namespace NorthwindProject.Business.Concrete.Managers
 
         public void Add(Product product)
         {
+            FluentValidatorTool.Validate(new ProductValidator(), product);
             ProductNameCheck(product);
             _productDal.Add(product);
         }
