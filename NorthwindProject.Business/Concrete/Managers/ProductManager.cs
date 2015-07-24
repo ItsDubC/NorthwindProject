@@ -60,6 +60,7 @@ namespace NorthwindProject.Business.Concrete.Managers
 
         public void Update(Product product)
         {
+            FluentValidatorTool.Validate(new ProductValidator(), product);
             ProductNameCheck(product);
             _productDal.Update(product);
         }

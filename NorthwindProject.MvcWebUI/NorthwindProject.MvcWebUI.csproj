@@ -161,6 +161,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,6 +229,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -236,6 +240,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NorthwindProject.Business\NorthwindProject.Business.csproj">
+      <Project>{df15121a-c450-463b-901a-73a6c6573761}</Project>
+      <Name>NorthwindProject.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NorthwindProject.Entities\NorthwindProject.Entities.csproj">
+      <Project>{f14e6ceb-41e8-4546-a60f-4035d12f9853}</Project>
+      <Name>NorthwindProject.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
