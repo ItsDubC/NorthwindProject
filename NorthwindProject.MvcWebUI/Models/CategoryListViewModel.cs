@@ -6,10 +6,9 @@ using System.Text;
 
 namespace NorthwindProject.MvcWebUI.Models
 {
-    public class ProductListViewModel
+    public class CategoryListViewModel
     {
-        public List<Product> Products { get; set; }
-
-        public PagingInfo PagingInfo { get; set; }
+        public int? CurrentCategoryId { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

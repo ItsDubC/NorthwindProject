@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -159,8 +163,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="HtmlHelpers\PagingHelper.cs" />
+    <Compile Include="Models\CategoryListViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DependencyResolvers\NinjectControllerFactory.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
@@ -230,6 +238,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Category\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +254,10 @@
     <ProjectReference Include="..\NorthwindProject.Business\NorthwindProject.Business.csproj">
       <Project>{df15121a-c450-463b-901a-73a6c6573761}</Project>
       <Name>NorthwindProject.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NorthwindProject.DataAccess\NorthwindProject.DataAccess.csproj">
+      <Project>{7dca5eee-602c-4489-be95-71f1a666b2f5}</Project>
+      <Name>NorthwindProject.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\NorthwindProject.Entities\NorthwindProject.Entities.csproj">
       <Project>{f14e6ceb-41e8-4546-a60f-4035d12f9853}</Project>

@@ -1,0 +1,11 @@
+﻿@model NorthwindProject.MvcWebUI.Models.CategoryListViewModel
+
+<div class="list-group">
+    @Html.ActionLink("All Products", "Index", new { controller = "Product" }, new { @class = Model.CurrentCategoryId == null ? "list-group-item active" : "list-group-item" })
+    @foreach(var category in Model.Categories)
+    {
+        @Html.ActionLink(category.Name, "Index",
+            new { controller = "Product", categoryId = category.Id},
+            new { @class=Model.CurrentCategoryId == category.Id ? "list-group-item active" : "list-group-item" })
+    }
+</div>

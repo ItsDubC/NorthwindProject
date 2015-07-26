@@ -16,11 +16,11 @@ namespace NorthwindProject.DataAccess.Concrete.EntityFramework.Mappings
             Property(t => t.Name).IsRequired().HasMaxLength(40);
             Property(t => t.QuantityPerUnit).HasMaxLength(20);
 
-            ToTable("Product");
+            ToTable("Products");
 
-            Property(t => t.Id).HasColumnName("Id");
-            Property(t => t.Name).HasColumnName("Name");
-            Property(t => t.CategoryId).HasColumnName("CategoryId");
+            Property(t => t.Id).HasColumnName("ProductId");
+            Property(t => t.Name).HasColumnName("ProductName");
+            Property(t => t.CategoryId).HasColumnName("CategoryID");
             Property(t => t.QuantityPerUnit).HasColumnName("QuantityPerUnit");
             Property(t => t.UnitsInStock).HasColumnName("UnitsInStock");
 

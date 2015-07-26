@@ -23,9 +23,9 @@ namespace NorthwindProject.DataAccess.Concrete.EntityFramework.Contexts
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
-        public DbSet<Category> Categories;
-        public DbSet<Product> Products;
-        public DbSet<User> Users;
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

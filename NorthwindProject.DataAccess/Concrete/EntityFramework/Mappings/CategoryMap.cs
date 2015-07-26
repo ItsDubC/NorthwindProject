@@ -14,11 +14,11 @@ namespace NorthwindProject.DataAccess.Concrete.EntityFramework.Mappings
         {
             HasKey(t => t.Id);
 
-            Property(t => t.Id).HasColumnName("Id");
+            Property(t => t.Id).HasColumnName("CategoryID");
             Property(t => t.Name).IsRequired()
                 .HasMaxLength(15)
-                .HasColumnName("Name");
-            //intentionall left Description mapping out to see what happens
+                .HasColumnName("CategoryName");
+            //intentionally left Description mapping out to see what happens
             HasMany(t => t.Products).WithOptional(t => t.Category);
         }
 

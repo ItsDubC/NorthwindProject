@@ -14,7 +14,7 @@ namespace NorthwindProject.DataAccess.Concrete.EntityFramework.Mappings
         {
             HasKey(t => t.Id);
 
-            Property(t => t.Id).HasColumnName("UserId");
+            Property(t => t.Id).HasColumnName("Id");
             Property(t => t.UserName).HasColumnName("UserName");
             Property(t => t.Password).HasColumnName("Password");
         }
